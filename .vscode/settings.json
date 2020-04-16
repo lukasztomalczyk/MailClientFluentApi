@@ -1,0 +1,13 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "master",
+            "dialect": "MSSQL",
+            "name": "DevelopServer",
+            "password": "yourStrong(!)Password",
+            "port": 1433,
+            "server": "develop_server",
+            "username": "sa"
+        }
+    ]
+}
