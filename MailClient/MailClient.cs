@@ -27,15 +27,16 @@ namespace MailClientFluentApi
             return this;
         }
 
-        public IMailClient PutMailToMailingList(string receiver, string body, string subject)
+        public IMailClient PutMailToMailingList(string receiver, string sender, string body, string subject)
         {
-            if (String.IsNullOrEmpty(receiver) | String.IsNullOrEmpty(body) | String.IsNullOrEmpty(subject))
+            if (String.IsNullOrEmpty(receiver) | String.IsNullOrEmpty(sender) 
+                | String.IsNullOrEmpty(subject) | String.IsNullOrEmpty(body))
             {
                 _logger.LogError(@"Provide required data for email message! Receiver: {receiver}, Subject: {subject}, Body: {body}");
                 throw new ArgumentNullException("Provide required data for email message!");
             }
 
-            _receiverList.Add(new SingleMail(_clientSettings.SmtpSender, receiver, subject, body).GetMessage());
+            _receiverList.Add(new SingleMail(sender, receiver, subject, body).GetMessage());
 
             return this;
         }
